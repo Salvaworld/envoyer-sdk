@@ -27,7 +27,7 @@ class Project extends Resource {
      * @return void
      */
     public function delete() {
-        $this->envoyer->deleteproject($this->id);
+        return $this->envoyer->deleteProject($this->id);
     }
 
     /**
