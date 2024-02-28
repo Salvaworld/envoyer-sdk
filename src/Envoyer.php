@@ -7,6 +7,7 @@ use GuzzleHttp\Client as HttpClient;
 class Envoyer {
 
     use MakesHttpRequests,
+    Actions\ManageServers,
     Actions\ManageProjects;
 
     /**
