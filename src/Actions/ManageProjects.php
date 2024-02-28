@@ -24,7 +24,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function project(string $projectId) {
-        return new Project($this->get("projects/$projectId")['projects']);
+        return new Project($this->get("projects/$projectId")['project']);
     }
 
     /**
@@ -76,7 +76,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function getLinkedFolders(string $projectId) {
-        return new Project($this->get("projects/$projectId")['folders']);
+        return new Project($this->get("projects/$projectId"));
     }
 
     /**
