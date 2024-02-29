@@ -11,12 +11,13 @@ trait ManageEnvironments {
      * Get environment by project id
      *
      * @param  string  $projectId
+     * @param  string  $key
      *
      * @return \SalvaWorld\Envoyer\Resources\Environment
      */
-    public function environment(string $projectId) {
+    public function environment(string $projectId, string $key) {
         return new Environment(
-            $this->get("projects/$projectId/environment")['environment'] + ['project_id' => $projectId], $this
+            $this->get("projects/$projectId/environment?key=$key")['environment'] + ['project_id' => $projectId], $this
         );
     }
 
