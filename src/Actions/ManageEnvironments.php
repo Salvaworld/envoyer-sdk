@@ -16,9 +16,7 @@ trait ManageEnvironments {
      * @return \SalvaWorld\Envoyer\Resources\Environment
      */
     public function environment(string $projectId, string $key) {
-        return new Environment(
-            $this->get("projects/$projectId/environment?key=$key")['environment'] + ['project_id' => $projectId], $this
-        );
+        return $this->get("projects/$projectId/environment?key=$key")['environment'];
     }
 
     /**
