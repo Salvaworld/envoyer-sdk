@@ -8,7 +8,7 @@ trait ManageServers {
 
     /**
      * Get the collection of servers.
-     * 
+     *
      * @param  string  $projectId
      *
      * @return \SalvaWorld\Envoyer\Resources\Server[]
@@ -56,16 +56,8 @@ trait ManageServers {
      *
      * @return \SalvaWorld\Envoyer\Resources\Server
      */
-    public function createServer(string $projectId, array $data, bool $wait = true) {
-        $server = $this->post("servers/$projectId/sites", $data)['site'];
-
-        if ($wait) {
-            return $this->retry($this->getTimeout(), function () use ($projectId, $server) {
-                $server = $this->server($projectId, $server['id']);
-            });
-        }
-
-        return new Server($server + ['project_id' => $projectId], $this);
+    public function createServer(string $projectId, array $data) {
+        return new Server($this->post("projects/$projectId/servers", $data)['server'] + ['project_id' => $projectId], $this);
     }
 
     /**
@@ -80,7 +72,7 @@ trait ManageServers {
     public function updateServer(string $serverId, string $projectId, array $data) {
         return new Server(
             $this->request('PUT', "projects/$projectId/servers/$serverId", ['json' => $data])['server']
-            + ['project_id' => $projectId], $this
+             + ['project_id' => $projectId], $this
         );
     }
 
@@ -93,7 +85,7 @@ trait ManageServers {
      * @return \SalvaWorld\Envoyer\Resources\Server
      */
     public function deleteServer(string $projectId, string $serverId) {
-        return new Server($this->delete("projects/$projectId/servers/$serverId"), $this);
+        $this->delete("projects/$projectId/servers/$serverId");
     }
 
 }
