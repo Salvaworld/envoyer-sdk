@@ -8,6 +8,7 @@ class Envoyer {
 
     use MakesHttpRequests,
     Actions\ManageServers,
+    Actions\ManageEnvironments,
     Actions\ManageProjects;
 
     /**

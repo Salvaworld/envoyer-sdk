@@ -24,7 +24,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function project(string $projectId) {
-        return new Project($this->get("projects/$projectId")['project']);
+        return new Project($this->get("projects/$projectId")['project'], $this);
     }
 
     /**
@@ -34,7 +34,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function createProject(array $data) {
-        return new Project($this->post('projects', $data)['project']);
+        return new Project($this->post('projects', $data)['project'], $this);
     }
 
     /**
@@ -45,7 +45,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function updateProjectSource(string $projectId, array $data) {
-        return new Project($this->put("projects/$projectId/source", $data)['project']);
+        return new Project($this->put("projects/$projectId/source", $data)['project'], $this);
     }
 
     /**
@@ -56,7 +56,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function updateProject(string $projectId, array $data) {
-        return new Project($this->put("projects/$projectId", $data)['project']);
+        return new Project($this->put("projects/$projectId", $data)['project'], $this);
     }
 
     /**
@@ -76,7 +76,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function getLinkedFolders(string $projectId) {
-        return new Project($this->get("projects/$projectId"));
+        return new Project($this->get("projects/$projectId"), $this);
     }
 
     /**
@@ -87,7 +87,7 @@ trait ManageProjects {
      * @return \SalvaWorld\Envoyer\Resources\Project
      */
     public function createLinkedFolder(string $projectId, array $data) {
-        return new Project($this->post("projects/$projectId/folders", $data)['folders']);
+        return new Project($this->post("projects/$projectId/folders", $data)['folders'], $this);
     }
 
     /**
