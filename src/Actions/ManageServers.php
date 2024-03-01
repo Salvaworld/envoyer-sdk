@@ -39,12 +39,12 @@ trait ManageServers {
     /**
      * Refresh the server.
      *
-     * @param  string  $serverId
      * @param  string  $projectId
+     * @param  string  $serverId
      *
      * @return \SalvaWorld\Envoyer\Resources\Server
      */
-    public function refreshServer(string $serverId, string $projectId) {
+    public function refreshServer(string $projectId, string $serverId) {
         return new Server($this->post("projects/$projectId/servers/$serverId/refresh"), $this);
     }
 
@@ -63,13 +63,13 @@ trait ManageServers {
     /**
      * Update server.
      *
-     * @param  string  $serverId
      * @param  string  $projectId
+     * @param  string  $serverId
      * @param  array  $data
      *
      * @return \SalvaWorld\Envoyer\Resources\Server
      */
-    public function updateServer(string $serverId, string $projectId, array $data) {
+    public function updateServer(string $projectId, string $serverId, array $data) {
         return new Server(
             $this->request('PUT', "projects/$projectId/servers/$serverId", ['json' => $data])['server']
              + ['project_id' => $projectId], $this
@@ -82,7 +82,7 @@ trait ManageServers {
      * @param  string  $projectId
      * @param  string  $serverId
      *
-     * @return \SalvaWorld\Envoyer\Resources\Server
+     * @return void
      */
     public function deleteServer(string $projectId, string $serverId) {
         $this->delete("projects/$projectId/servers/$serverId");

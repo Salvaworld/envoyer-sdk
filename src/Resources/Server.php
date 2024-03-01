@@ -25,7 +25,7 @@ class Server extends Resource {
      * @return \SalvaWorld\Envoyer\Resources\Server
      */
     public function update(array $data) {
-        return $this->envoyer->updateServer($this->id, $this->projectId, $data);
+        return $this->envoyer->updateServer($this->projectId, $this->id, $data);
     }
 
     /**
@@ -34,16 +34,16 @@ class Server extends Resource {
      * @return \SalvaWorld\Envoyer\Resources\Server
      */
     public function refresh() {
-        return $this->envoyer->refreshServer($this->id, $this->projectId);
+        return $this->envoyer->refreshServer($this->projectId, $this->id);
     }
 
     /**
      * Delete server.
      *
-     * @return \SalvaWorld\Envoyer\Resources\Server
+     * @return void
      */
     public function delete() {
-        return $this->envoyer->deleteServer($this->id, $this->projectId);
+        $this->envoyer->deleteServer($this->projectId, $this->id);
     }
 
 }
