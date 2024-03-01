@@ -9,6 +9,11 @@ class Envoyer {
     use MakesHttpRequests,
     Actions\ManageServers,
     Actions\ManageEnvironments,
+    Actions\ManageHooks,
+    Actions\ManageDeployments,
+    Actions\ManageHeartBeats,
+    Actions\ManageCollaborators,
+    Actions\ManageNotifications,
     Actions\ManageProjects;
 
     /**
