@@ -13,7 +13,7 @@ trait ManageHeartBeats {
      *
      * @return \SalvaWorld\Envoyer\Resources\HeartBeat[]
      */
-    public function heartbeats(string $projectId) {
+    public function heartBeats(string $projectId) {
 
         return $this->transformCollection(
             $this->get("projects/$projectId/heartbeats")['heartbeats'],

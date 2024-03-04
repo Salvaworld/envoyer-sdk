@@ -32,7 +32,7 @@ trait ManageNotifications {
      */
     public function notification(string $projectId, string $notificationId) {
         return new Notification(
-            $this->get("projects/$projectId/notifications/$notificationId")['notification'] + ['project_id' => $projectId], $this
+            $this->get("projects/$projectId/notifications/$notificationId") + ['project_id' => $projectId], $this
         );
     }
 
@@ -45,7 +45,7 @@ trait ManageNotifications {
      * @return \SalvaWorld\Envoyer\Resources\Notification
      */
     public function createNotification(string $projectId, array $data) {
-        return new Notification($this->post("projects/$projectId/notifications", $data)['notifications'] + ['project_id' => $projectId], $this);
+        return new Notification($this->post("projects/$projectId/notifications", $data) + ['project_id' => $projectId], $this);
     }
 
     /**
@@ -68,12 +68,12 @@ trait ManageNotifications {
      * Delete notification.
      *
      * @param  string  $projectId
-     * @param  string  $email
+     * @param  string  $notificationId
      *
      * @return void
      */
-    public function deleteNotification(string $projectId, string $email) {
-        $this->delete("projects/$projectId/notifications", ['email' => $email]);
+    public function deleteNotification(string $projectId, string $notificationId) {
+        $this->delete("projects/$projectId/notifications/$notificationId");
     }
 
 }

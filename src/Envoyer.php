@@ -14,6 +14,7 @@ class Envoyer {
     Actions\ManageHeartBeats,
     Actions\ManageCollaborators,
     Actions\ManageNotifications,
+    Actions\ManageActions,
     Actions\ManageProjects;
 
     /**
